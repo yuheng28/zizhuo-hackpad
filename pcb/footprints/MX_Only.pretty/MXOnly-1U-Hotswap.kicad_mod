@@ -321,15 +321,26 @@
 		(uuid "d26a66a9-d23a-4274-99c3-8637edea0a63")
 	)
 	(embedded_fonts no)
-	(model "${KILIB}/MX_Alps_Hybrid.pretty/MX_Only.pretty/3d_shapes/CPG151101S11.wrl"
+	(model "${KIPRJMOD}/models/Kailh Hotswap.step"
 		(offset
-			(xyz 0 0 -1.4868)
+			(xyz 4.8 6.7 -3.4)
 		)
 		(scale
-			(xyz 0.393701 0.3937 0.393701)
+			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -0 -0 -180)
+		)
+	)
+	(model "${KIPRJMOD}/models/Cherry MX.STEP"
+		(offset
+			(xyz -0.05 1 1.2)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
 		)
 	)
 )
