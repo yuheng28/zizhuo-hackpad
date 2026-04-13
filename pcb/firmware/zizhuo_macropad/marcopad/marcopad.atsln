@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "marcopad", "marcopad\marcopad.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "KEYBOARD_EXAMPLE1", "KEYBOARD_EXAMPLE1\KEYBOARD_EXAMPLE1.cproj", "{201382A5-78FC-4946-9264-81BC793428E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|AVR = Debug|AVR
+		Release|ARM = Release|ARM
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|ARM.ActiveCfg = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|ARM.ActiveCfg = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{201382A5-78FC-4946-9264-81BC793428E6}.Debug|ARM.ActiveCfg = Debug|ARM
+		{201382A5-78FC-4946-9264-81BC793428E6}.Debug|ARM.Build.0 = Debug|ARM
+		{201382A5-78FC-4946-9264-81BC793428E6}.Debug|AVR.ActiveCfg = Debug|ARM
+		{201382A5-78FC-4946-9264-81BC793428E6}.Release|ARM.ActiveCfg = Release|ARM
+		{201382A5-78FC-4946-9264-81BC793428E6}.Release|ARM.Build.0 = Release|ARM
+		{201382A5-78FC-4946-9264-81BC793428E6}.Release|AVR.ActiveCfg = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
