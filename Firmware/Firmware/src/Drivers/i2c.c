@@ -79,3 +79,8 @@ void i2c_read_ack(uint8_t *buffer) {
 	
 	*buffer = TWDR;
 }
+
+void i2c_reset() {
+	TWCR = 0;              // disable TWI hardware
+	TWCR = (1<<TWEN);     // re-enable TWI
+}

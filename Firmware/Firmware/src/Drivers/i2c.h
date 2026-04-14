@@ -18,4 +18,6 @@ void i2c_send(uint8_t data);
 void i2c_read_nack(uint8_t *buffer);
 void i2c_read_ack(uint8_t *buffer);
 
+void i2c_reset();
+
 #endif /* I2C_H_ */
