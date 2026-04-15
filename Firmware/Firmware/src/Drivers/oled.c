@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 #include <stddef.h>
+#include <avr/delay.h>
 #include "oled.h"
 
 void oled_init() {
@@ -57,30 +58,68 @@ void oled_turn_off() {
 	i2c_send_stop();
 }
 
-void oled_set_addressing() {
+void oled_set_addressing(uint8_t start_col, uint8_t start_page) {
 	i2c_send_start();
 	i2c_enter_MT_mode(OLED_ADDR);
 	i2c_send(0x00);
 
 	i2c_send(0x21); // column address
-	i2c_send(0x00); // start column
+	i2c_send(start_col); // start column
 	i2c_send(0x7F); // end column
 
 	i2c_send(0x22); // page address
-	i2c_send(0x00); // start page
-	i2c_send(0x07); // end page (32px display)
+	i2c_send(start_page); // start page
+	i2c_send(0x07); // end page (64px display)
 
 	i2c_send_stop();
 }
 
+static uint16_t oled_index = 0;
+static uint8_t *oled_buf = NULL;
+volatile uint8_t oled_busy = 0;
+
+void oled_start_update(uint8_t *arr) {
+	if (oled_busy) return;
+
+	oled_buf = arr;
+	oled_index = 0;
+	oled_busy = 1;
+}
+
+void oled_update_step() {
+	if (!oled_busy) return;
+
+	// First call ? send header
+	//if (oled_index == 0) {
+		//
+	//}
+	
+	// Send a small chunk per call
+	uint8_t chunk = 128;  // ?? should be multiple of 8 and factor of 64
+
+	oled_set_addressing(oled_index % 128, (oled_index / 128)); // columns are 128 pixels, each page is 8 rows. / takes floor for integers
+
+	i2c_send_start();
+	i2c_enter_MT_mode(OLED_ADDR);
+	i2c_send(0x40); // data mode
+
+	for (uint8_t i = 0; i < chunk && oled_index < CACHE_SIZE; i++) {
+		i2c_send(oled_buf[oled_index++]);
+	}
+	i2c_send_stop();
+
+	// Done
+	if (oled_index >= CACHE_SIZE) {
+		oled_busy = 0;
+	}
+}
+
 void oled_update_ram(uint8_t *arr) {
-	uint16_t i = 0;
 	i2c_send_start();
 	i2c_enter_MT_mode(OLED_ADDR);
 	i2c_send(0x40); // Co = 0, D/C# = 1 (data)
 	
-	i = 0;
-	
+	uint16_t i = 0;
 	while (i < CACHE_SIZE) {
 		i2c_send(arr[i++]);
 	}

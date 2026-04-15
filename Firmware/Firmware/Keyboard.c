@@ -62,7 +62,7 @@ USB_ClassInfo_HID_Device_t Keyboard_HID_Interface =
 
 
 // byte array of image
-uint8_t frame_one[CACHE_SIZE] = 
+static uint8_t frame_one[CACHE_SIZE] = 
 {
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -130,7 +130,7 @@ uint8_t frame_one[CACHE_SIZE] =
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
-uint8_t frame_two[CACHE_SIZE] =
+static uint8_t frame_two[CACHE_SIZE] =
 {
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -198,17 +198,32 @@ uint8_t frame_two[CACHE_SIZE] =
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
-volatile bool key_pressed = false;
+void paw_down() {
+	for (volatile int i = 0; i < 100000; i++);
+	oled_start_update(frame_two);
+	//oled_set_addressing();
+	//oled_update_ram(frame_two);
+}
+
+void paw_up() {
+	oled_start_update(frame_one);
+	//oled_set_addressing();
+	//oled_update_ram(frame_one);
+}
+
+typedef enum {
+	PAW_UP,
+	PAW_DOWN
+} paw_state_t;
+
+volatile paw_state_t paw_state = PAW_UP;
+volatile uint16_t paw_timer_in_ms = 0;
 
 /** Main program entry point. This routine contains the overall program flow, including initial
  *  setup of all components and the main program loop.
  */
 int main(void)
 {	
-	i2c_init();
-	oled_init();
-	_delay_ms(100);
-	
 	//while (1) {
 		//i2c_reset();
 		//oled_set_addressing();
@@ -226,24 +241,32 @@ int main(void)
 	SetupHardware();
 	DDRB = 0x00;
 	PORTB = 0xFF;
+	
+	i2c_init();
+	oled_init();
+	_delay_ms(100);
+	
+	// set first frame
+	paw_up();
 
-	//LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
 	GlobalInterruptEnable();
+
+	static uint8_t last_frame = 0;
 
 	for (;;)
 	{
 		HID_Device_USBTask(&Keyboard_HID_Interface);
 		USB_USBTask();
 		
-		// toggle cat if key pressed
-		i2c_reset();
-		oled_set_addressing();
-		i2c_reset();
+		oled_update_step();
 		
-		if (key_pressed) {
-			oled_update_ram(frame_two);
-			} else {
-			oled_update_ram(frame_one);
+		if (paw_state ==  PAW_DOWN && last_frame != 1 && !oled_busy) {
+			paw_down();
+			last_frame = 1;
+		}
+		else if (paw_state ==  PAW_UP && last_frame != 0 && !oled_busy) {
+			paw_up();
+			last_frame = 0;
 		}
 	}
 }
@@ -271,22 +294,7 @@ void SetupHardware()
 #endif
 
 	/* Hardware Initialization */
-	//Joystick_Init();
-	//LEDs_Init();
-	////Buttons_Init();
 	USB_Init();
-}
-
-/** Event handler for the library USB Connection event. */
-void EVENT_USB_Device_Connect(void)
-{
-	//LEDs_SetAllLEDs(LEDMASK_USB_ENUMERATING);
-}
-
-/** Event handler for the library USB Disconnection event. */
-void EVENT_USB_Device_Disconnect(void)
-{
-	//LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
 }
 
 /** Event handler for the library USB Configuration Changed event. */
@@ -311,6 +319,11 @@ void EVENT_USB_Device_ControlRequest(void)
 void EVENT_USB_Device_StartOfFrame(void)
 {
 	HID_Device_MillisecondElapsed(&Keyboard_HID_Interface);
+	
+	// update paw_timer
+	if (paw_timer_in_ms > 0) paw_timer_in_ms--;
+	
+	if (paw_timer_in_ms == 0 && paw_state == PAW_DOWN) paw_state = PAW_UP;
 }
 
 /** HID class driver callback function for the creation of HID reports to the host.
@@ -331,8 +344,11 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 {
 	USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
 
-	uint8_t UsedKeyCodes = 0;
+	memset(KeyboardReport, 0, sizeof(USB_KeyboardReport_Data_t));
 
+	uint8_t UsedKeyCodes = 0;
+	bool key_pressed = false;
+	
 	if(!(PINB&(1<<PB1))) {
 		key_pressed = true;
 		KeyboardReport->KeyCode[UsedKeyCodes++] = HID_KEYBOARD_SC_1_AND_EXCLAMATION;
@@ -362,36 +378,21 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 		key_pressed = true;
 		KeyboardReport->KeyCode[UsedKeyCodes++] = HID_KEYBOARD_SC_6_AND_CARET;
 	}
+	
+	if (key_pressed) {
+		paw_state = PAW_DOWN;
+		paw_timer_in_ms = PAW_DOWN_TIME_MS;
+	}
 
 	*ReportSize = sizeof(USB_KeyboardReport_Data_t);
 	return false;
 }
 
-/** HID class driver callback function for the processing of HID reports from the host.
- *
- *  \param[in] HIDInterfaceInfo  Pointer to the HID class interface configuration structure being referenced
- *  \param[in] ReportID    Report ID of the received report from the host
- *  \param[in] ReportType  The type of report that the host has sent, either HID_REPORT_ITEM_Out or HID_REPORT_ITEM_Feature
- *  \param[in] ReportData  Pointer to a buffer where the received report has been stored
- *  \param[in] ReportSize  Size in bytes of the received HID report
- */
 void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo,
                                           const uint8_t ReportID,
                                           const uint8_t ReportType,
                                           const void* ReportData,
                                           const uint16_t ReportSize)
 {
-	//uint8_t  LEDMask   = LEDS_NO_LEDS;
-	//uint8_t* LEDReport = (uint8_t*)ReportData;
-//
-	//if (*LEDReport & HID_KEYBOARD_LED_NUMLOCK)
-	  //LEDMask |= LEDS_LED1;
-//
-	//if (*LEDReport & HID_KEYBOARD_LED_CAPSLOCK)
-	  //LEDMask |= LEDS_LED3;
-//
-	//if (*LEDReport & HID_KEYBOARD_LED_SCROLLLOCK)
-	  //LEDMask |= LEDS_LED4;
-//
-	//LEDs_SetAllLEDs(LEDMask);
+	// none used, but LUFA requires this to be defined.
 }
