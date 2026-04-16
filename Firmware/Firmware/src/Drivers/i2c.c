@@ -11,7 +11,7 @@ void i2c_init() {
 	TWBR = 72; // 400kHz from 16MHz clock
 	TWCR = (1 << TWEN);
 	
-	PORTD |= (1 << PD0) | (1 << PD1);  // Enable pull-ups on SCL and SDA
+	// PORTD |= (1 << PD0) | (1 << PD1);  // Enable pull-ups on SCL and SDA
 }
 
 void i2c_reset() {
@@ -24,10 +24,10 @@ void i2c_send_start() {
 	
 	// wait for TWINT flag to be set
 	while (!(TWCR & (1<<TWINT)));
-	
-	if ((TWSR & 0xF8) != 0x08) {
-		i2c_reset();
-	}
+	//
+	//if ((TWSR & 0xF8) != 0x08) {
+		//i2c_reset();
+	//}
 	
 	//uint8_t a = (TWSR & 0xF8);
 	//char output[20];
@@ -72,10 +72,6 @@ void i2c_send(uint8_t data) {
 	
 	// wait for TWINT flag to be set
 	while (!(TWCR & (1<<TWINT)));
-	
-	if (TWSR & 0xF8 != 0x28) {
-		i2c_reset(); // recover bus
-	}
 }
 
 void i2c_read_nack(uint8_t *buffer) {

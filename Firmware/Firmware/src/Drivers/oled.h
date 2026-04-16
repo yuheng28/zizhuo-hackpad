@@ -15,8 +15,8 @@
 #define CACHE_SIZE (128 * 64) / 8 // since 128 x 64 screen
 #define PAW_DOWN_TIME_MS 500
 
-static uint8_t frame_one[CACHE_SIZE];
-static uint8_t frame_two[CACHE_SIZE];
+extern uint8_t frame_one[CACHE_SIZE];
+extern uint8_t frame_two[CACHE_SIZE];
 
 volatile uint8_t oled_busy;
 

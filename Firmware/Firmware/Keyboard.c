@@ -62,7 +62,7 @@ USB_ClassInfo_HID_Device_t Keyboard_HID_Interface =
 
 
 // byte array of image
-static uint8_t frame_one[CACHE_SIZE] = 
+uint8_t frame_one[CACHE_SIZE] = 
 {
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -130,7 +130,7 @@ static uint8_t frame_one[CACHE_SIZE] =
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
-static uint8_t frame_two[CACHE_SIZE] =
+uint8_t frame_two[CACHE_SIZE] =
 {
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -199,16 +199,11 @@ static uint8_t frame_two[CACHE_SIZE] =
 };
 
 void paw_down() {
-	for (volatile int i = 0; i < 100000; i++);
 	oled_start_update(frame_two);
-	//oled_set_addressing();
-	//oled_update_ram(frame_two);
 }
 
 void paw_up() {
 	oled_start_update(frame_one);
-	//oled_set_addressing();
-	//oled_update_ram(frame_one);
 }
 
 typedef enum {
@@ -224,21 +219,31 @@ volatile uint16_t paw_timer_in_ms = 0;
  */
 int main(void)
 {	
+	// memset(frame_one, 0xff, sizeof(frame_one));
+	//DDRB = 0x00;
+	//PORTB = 0xFF;
+	//
+	//i2c_init();
+	//oled_init();
+	//_delay_ms(100);
+	//
 	//while (1) {
 		//i2c_reset();
-		//oled_set_addressing();
-		//i2c_reset();
+		//oled_set_addressing(0,0);
+		////i2c_reset();
 		//oled_update_ram(frame_one);
 		//_delay_ms(250);
-		//i2c_reset();
-		//oled_set_addressing();
-		//i2c_reset();
+		////i2c_reset();
+		//oled_set_addressing(0,0);
+		////i2c_reset();
 		//oled_update_ram(frame_two);
 		//_delay_ms(250);
 	//};
-	//
+	
 	
 	SetupHardware();
+	GlobalInterruptEnable();
+	
 	DDRB = 0x00;
 	PORTB = 0xFF;
 	
@@ -247,9 +252,7 @@ int main(void)
 	_delay_ms(100);
 	
 	// set first frame
-	paw_up();
-
-	GlobalInterruptEnable();
+	oled_update_ram(frame_one);
 
 	static uint8_t last_frame = 0;
 

@@ -1377,7 +1377,7 @@
 		(uuid 7db81406-e420-440d-96ce-9b5d4620e8e4)
 	)
 	(rectangle
-		(start 140.97 39.37)
+		(start 140.97 33.02)
 		(end 180.34 66.04)
 		(stroke
 			(width 0)
@@ -1400,7 +1400,7 @@
 	)
 	(text "OLED Display"
 		(exclude_from_sim no)
-		(at 149.098 42.672 0)
+		(at 149.352 36.576 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1437,6 +1437,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3e1d3dde-2855-4e13-b55f-cb6b1ff56d9e")
+	)
+	(junction
+		(at 161.29 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "43671a5c-82f7-4c95-847c-bd5495e25dcf")
 	)
 	(junction
 		(at 193.04 87.63)
@@ -1497,6 +1503,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ce52727b-9f27-47e5-bc3e-5d7810dfee1c")
+	)
+	(junction
+		(at 163.83 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d4e3878c-4ac2-4b8e-9a7a-8ef140f50e90")
 	)
 	(junction
 		(at 185.42 113.03)
@@ -1584,6 +1596,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 48.26) (xy 165.1 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "046288d6-b870-480d-9ef3-ed7f02df2438")
+	)
+	(wire
+		(pts
 			(xy 200.66 87.63) (xy 208.28 87.63)
 		)
 		(stroke
@@ -1594,7 +1616,7 @@
 	)
 	(wire
 		(pts
-			(xy 151.13 53.34) (xy 165.1 53.34)
+			(xy 147.32 53.34) (xy 165.1 53.34)
 		)
 		(stroke
 			(width 0)
@@ -1611,6 +1633,26 @@
 			(type default)
 		)
 		(uuid "11912712-927b-4d84-81d7-6a58f8eb7184")
+	)
+	(wire
+		(pts
+			(xy 163.83 46.99) (xy 163.83 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14757264-babe-4640-a3e6-1223920fa3bd")
+	)
+	(wire
+		(pts
+			(xy 161.29 38.1) (xy 161.29 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1512d799-def0-4eac-9514-1a0a03ac65ea")
 	)
 	(wire
 		(pts
@@ -1714,7 +1756,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 48.26) (xy 165.1 48.26)
+			(xy 156.21 48.26) (xy 163.83 48.26)
 		)
 		(stroke
 			(width 0)
@@ -1751,6 +1793,26 @@
 			(type default)
 		)
 		(uuid "51477188-b775-42a7-a2f1-6df5ded07dc4")
+	)
+	(wire
+		(pts
+			(xy 161.29 50.8) (xy 165.1 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52454d45-1100-4fef-a6b1-9c1d8a5a1ebd")
+	)
+	(wire
+		(pts
+			(xy 163.83 38.1) (xy 163.83 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "532478fe-42ae-47d1-8698-6290742a804a")
 	)
 	(wire
 		(pts
@@ -1824,7 +1886,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 50.8) (xy 165.1 50.8)
+			(xy 156.21 50.8) (xy 161.29 50.8)
 		)
 		(stroke
 			(width 0)
@@ -1901,6 +1963,16 @@
 			(type default)
 		)
 		(uuid "b01e33ec-3f70-40f1-9987-61d0b1986c33")
+	)
+	(wire
+		(pts
+			(xy 161.29 46.99) (xy 161.29 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0d5599e-c770-4ccf-bc8b-0be3e5eedb78")
 	)
 	(wire
 		(pts
@@ -2116,7 +2188,7 @@
 	)
 	(global_label "SCL"
 		(shape input)
-		(at 161.29 50.8 180)
+		(at 156.21 50.8 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2126,7 +2198,7 @@
 		)
 		(uuid "3567b0b9-4dae-4d68-a54c-b1194a1bcee7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 154.7972 50.8 0)
+			(at 149.7172 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2182,7 +2254,7 @@
 	)
 	(global_label "SDA"
 		(shape input)
-		(at 161.29 48.26 180)
+		(at 156.21 48.26 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2192,7 +2264,7 @@
 		)
 		(uuid "55f57d48-e9a2-4908-a815-6409d628bc9f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 154.7367 48.26 0)
+			(at 149.6567 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2445,6 +2517,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 161.29 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06dd9466-cf2f-4a26-9448-35c663e252f1")
+		(property "Reference" "R7"
+			(at 156.718 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 156.718 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 159.512 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 161.29 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 161.29 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d857f0c0-154e-478c-adf1-9643e6674f64")
+		)
+		(pin "2"
+			(uuid "eb696d92-749e-4255-8da4-07e0eefb2702")
+		)
+		(instances
+			(project "final macropad"
+				(path "/b33d9d1d-e7ba-4fb8-a504-696943b75d3d"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_Push")
 		(at 223.52 130.81 0)
 		(unit 1)
@@ -2513,6 +2654,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 163.83 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36f0950c-af0e-4dca-a7f1-bbb6408c0794")
+		(property "Reference" "#PWR08"
+			(at 163.83 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 166.878 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 163.83 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "55a1b5b1-5c2e-4a41-ad84-2e5116ca71bc")
+		)
+		(instances
+			(project "final macropad"
+				(path "/b33d9d1d-e7ba-4fb8-a504-696943b75d3d"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 170.18 91.44 0)
 		(unit 1)
@@ -2531,7 +2737,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4.7k"
 			(at 172.72 92.7099 0)
 			(effects
 				(font
@@ -2718,6 +2924,71 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
+		(at 161.29 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "43707aad-70fb-42a6-9c2d-70e73ead8bd7")
+		(property "Reference" "#PWR07"
+			(at 161.29 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 157.988 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 161.29 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 161.29 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ad3edd71-4e56-4be5-aecd-0cfde37c67a0")
+		)
+		(instances
+			(project "final macropad"
+				(path "/b33d9d1d-e7ba-4fb8-a504-696943b75d3d"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
 		(at 160.02 85.09 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2801,7 +3072,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4.7k"
 			(at 187.96 110.4899 0)
 			(effects
 				(font
@@ -2939,7 +3210,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4.7k"
 			(at 195.58 119.3799 0)
 			(effects
 				(font
@@ -3149,7 +3420,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4.7"
 			(at 210.82 137.1599 0)
 			(effects
 				(font
@@ -3332,7 +3603,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 151.13 53.34 0)
+		(at 147.32 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3340,7 +3611,7 @@
 		(dnp no)
 		(uuid "b22ca06b-3b27-4854-99fe-249ca80f5425")
 		(property "Reference" "#PWR03"
-			(at 151.13 57.15 0)
+			(at 147.32 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3349,7 +3620,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 147.828 52.07 0)
+			(at 144.018 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3357,7 +3628,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 151.13 53.34 0)
+			(at 147.32 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3366,7 +3637,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 151.13 53.34 0)
+			(at 147.32 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3375,7 +3646,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 151.13 53.34 0)
+			(at 147.32 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3750,7 +4021,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4.7"
 			(at 203.2 128.2699 0)
 			(effects
 				(font
@@ -3870,6 +4141,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 163.83 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eb05bae2-6a5c-43db-95fc-a571632a8a56")
+		(property "Reference" "R8"
+			(at 165.608 41.656 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 165.608 44.196 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 162.052 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 163.83 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fe5a66a7-5e58-4162-bc21-00f22c7f0722")
+		)
+		(pin "2"
+			(uuid "51bd71df-f338-4142-ac5a-a8326f2b4360")
+		)
+		(instances
+			(project "final macropad"
+				(path "/b33d9d1d-e7ba-4fb8-a504-696943b75d3d"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 109.22 99.06 0)
 		(unit 1)
@@ -3953,7 +4293,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "4.7k"
 			(at 180.34 101.5999 0)
 			(effects
 				(font

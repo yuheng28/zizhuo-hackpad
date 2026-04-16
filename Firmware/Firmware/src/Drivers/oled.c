@@ -84,6 +84,8 @@ void oled_start_update(uint8_t *arr) {
 	oled_buf = arr;
 	oled_index = 0;
 	oled_busy = 1;
+	
+	oled_set_addressing(0, 0);
 }
 
 void oled_update_step() {
@@ -97,7 +99,7 @@ void oled_update_step() {
 	// Send a small chunk per call
 	uint8_t chunk = 128;  // ?? should be multiple of 8 and factor of 64
 
-	oled_set_addressing(oled_index % 128, (oled_index / 128)); // columns are 128 pixels, each page is 8 rows. / takes floor for integers
+	//oled_set_addressing(oled_index % 128, (oled_index / 128)); // columns are 128 pixels, each page is 8 rows. / takes floor for integers
 
 	i2c_send_start();
 	i2c_enter_MT_mode(OLED_ADDR);
@@ -105,6 +107,7 @@ void oled_update_step() {
 
 	for (uint8_t i = 0; i < chunk && oled_index < CACHE_SIZE; i++) {
 		i2c_send(oled_buf[oled_index++]);
+		USB_USBTask();
 	}
 	i2c_send_stop();
 
@@ -115,6 +118,7 @@ void oled_update_step() {
 }
 
 void oled_update_ram(uint8_t *arr) {
+	oled_set_addressing(0, 0);
 	i2c_send_start();
 	i2c_enter_MT_mode(OLED_ADDR);
 	i2c_send(0x40); // Co = 0, D/C# = 1 (data)
