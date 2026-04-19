@@ -18,14 +18,14 @@ void oled_init() {
 
 	i2c_send(0xAE); // display OFF
 	i2c_send(0xD5); i2c_send(0x80);
-	i2c_send(0xA8); i2c_send(0x3F);
+	i2c_send(0xA8); i2c_send(0x1F);
 	i2c_send(0xD3); i2c_send(0x00);
 	i2c_send(0x40);
 	i2c_send(0x8D); i2c_send(0x14); // charge pump ON
 	i2c_send(0x20); i2c_send(0x00); // horizontal addressing mode
 	i2c_send(0xA1);
 	i2c_send(0xC8);
-	i2c_send(0xDA); i2c_send(0x12);
+	i2c_send(0xDA); i2c_send(0x02);
 	i2c_send(0x81); i2c_send(0x7F);
 	i2c_send(0xA4);
 	i2c_send(0xA6);
@@ -69,7 +69,7 @@ void oled_set_addressing(uint8_t start_col, uint8_t start_page) {
 
 	i2c_send(0x22); // page address
 	i2c_send(start_page); // start page
-	i2c_send(0x07); // end page (64px display)
+	i2c_send(0x03); // end page (32px display)
 
 	i2c_send_stop();
 }

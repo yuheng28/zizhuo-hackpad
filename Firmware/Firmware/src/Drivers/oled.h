@@ -12,7 +12,7 @@
 #include "i2c.h"
 
 #define OLED_ADDR 0x3C
-#define CACHE_SIZE (128 * 64) / 8 // since 128 x 64 screen
+#define CACHE_SIZE (128 * 32) / 8 // since 128 x 64 screen
 #define PAW_DOWN_TIME_MS 500
 
 extern uint8_t frame_one[CACHE_SIZE];
