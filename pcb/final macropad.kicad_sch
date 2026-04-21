@@ -4,6 +4,13 @@
 	(generator_version "9.0")
 	(uuid "b33d9d1d-e7ba-4fb8-a504-696943b75d3d")
 	(paper "A4")
+	(title_block
+		(title "Zizhuo Macropad")
+		(date "2026-04-11")
+		(rev "2.2")
+		(company "Ng Yu Heng, Hong Guo Feng")
+		(comment 1 "Macropad Designed for Zizhuo's Birthday")
+	)
 	(lib_symbols
 		(symbol "Arduino:Sparkfun_Pro_Micro"
 			(pin_names
@@ -4350,4 +4357,24 @@
 		)
 	)
 	(embedded_fonts no)
+	(embedded_files
+		(file
+			(name "zizhuopad.kicad_wks")
+			(type worksheet)
+			(data |KLUv/WABCW0UAPadXiEAtxsWHGS5ac4JWlhdTS3ZQeABQKzGkOeo5yaqqm4BIAJUAE0AWAB5xP/4
+				I/F/PDZP2td6sjdyvuOi4aLW7M+HluTXiobLou0nW37JvwAABASk6L2cVlZxKhs6RySrzvi97Nc9
+				BoxSiqiz9sW2zD4qAAKCMkTihB5oQ4VdYrKiVX/J//trIq7a8zKVMnhtv+ek98x+MwZf7NmzCoFY
+				/NrFt9/++Q6vCGevq/7r44jBWbt2eL3WOa2rdoZlVjZpf/a+rKr20bsPephQxF8nKqfZLiO/YFjV
+				EWolOpuUUuEwl03DcWgNLoIiXNZlXT0pzSxFL7DU1mkOzpbBYDgUoRn+niPnbMr+18E2deyXItBV
+				m2qmevX8vm9SRAHwF3doXzUBgaEqapZNBO0o28R0PXLEjVk3FM0yqTQWkE6zdNsGwWAYwkpMNMom
+				4R72AVrRe9uG2nVhTbpJOq4T33aVVhrafvcPZnBIDUKu6vfGjDudnfQsl82iWfxkA3Sg0UCHHJoS
+				UZAkSTpgRKTmqh58ydw6HOT34t+rqOyMQT7ZMIZ5T++YII8GygjjWC475yaGfEy0wcezeezaPDte
+				FmTpYs1iemriCcKR29dmmvPiTxPwqZzsKZRQk1nMhgj2ISCU8e7YIj9grRzOyKAhTJ76YcJiN8YV
+				Di6ZsjQail5KUUyWjVMH8QH3f6YWHNtMH72HdRikI6b+qClK05DLxnIf4RpAb23FYUFAe5j+RoUi
+				745wgN+e77VsIew8s3ALXfTKD8T2dXj0CQLPVJEgFXgLYS4AhghypzcfHgLGbhJovPoY+IwKAOo9
+				SNJU4UFKmxPyW5HATuaKYZsGjXri1qz1/zg+gn7y0QF/DEwV|
+			)
+			(checksum "FE3E7361A44BD2D0931D02A779DA6436")
+		)
+	)
 )
