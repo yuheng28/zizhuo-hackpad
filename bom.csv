@@ -1,0 +1,10 @@
+Name,Purpose,Quantity,Link,Distributor
+3D Printed Case,Case for the Macropad,1,,Additive Inn
+USB C Cable,To connect the keyboard to the computer,1,,Selleys
+Gateron Hot-swappable Key Sockets,To allow the switches to be easily swapped without the need for desoldering,6,https://shopee.sg/10-pcs-Gateron-Hot-swappable-PCB-Socket-Mechanical-Keyboard-DIY-Hot-Plug-Socket-For-Cherry-MX-Switch-i.890923955.26713298801,Shopee
+Resistors (1k),Pullup resistors for i2c bus,2,https://shopee.sg/1-PCS-or-10-PCS-of-Metal-Film-Resistors-1-4W-0.25W-1-10-Ohm-~1M-Ohm-Perintang-i.1361674071.27680985111,Shopee
+Resistors (4.7k),Pullup resistors for switch matrix,6,https://shopee.sg/1-PCS-or-10-PCS-of-Metal-Film-Resistors-1-4W-0.25W-1-10-Ohm-~1M-Ohm-Perintang-i.1361674071.27680985111,Shopee
+"0.91"" 128x32 OLED Display",To have a dynamic element on the keyboard,1,https://shopee.sg/White-Blue-color-128X64-OLED-LCD-LED-Display-Module-For-Arduino-0.91-0.96-1.3-I2C-IIC-Serial-new-original-with-Case-i.365165105.8999544279,Shopee
+PCB,To connect electrical parts,1,,JLCPCB
+Akko Piano Switches,Switches for the keyboard,6,https://shopee.sg/-LINEAR-Akko-V3-Piano-Pro-45gf-Linear-Factory-Lubed-Mechanical-Switch-i.1344447555.27310390752,Shopee
+Sparkfun Pro Micro,MCU,1,https://shopee.sg/Pro-Micro-ATmega32U4-5V-16MHz-Replace-ATmega328-For-ATMega-32U4-Pro-Mini-With-2-Row-Pin-Header-i.517411014.23679394357,Shopee
