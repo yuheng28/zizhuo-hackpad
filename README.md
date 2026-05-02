@@ -50,10 +50,12 @@ To flash the microcontroller, it needs to first be put into bootloader mode. Thi
 
 ## Project Pictures
 
-![](assets/pcb%20top-no-bg.png){width=250px height=250px}
-![](assets/pcb%20bottom-no-bg.png){width=250px height=250px}
-![](assets/top%20view-no-bg.png){width=275px height=250px}
-![](assets/oblique%20view-no-bg.png){width=300px height=250px}
+<p align="center">
+  <img src="assets/pcb%20top-no-bg.png" style="width:250px"/>
+  <img src="assets/pcb%20bottom-no-bg.png" style="width:225px;"/>
+  <img src="assets/top%20view-no-bg.png" style="width:250px"/>
+  <img src="assets/oblique%20view-no-bg.png" style="width:250px"/>
+</p>
 
 ## Special Thanks
 
