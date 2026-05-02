@@ -1,7 +1,7 @@
 # ZizhuoPad
 
 <p align="center">
-  <img src="assets/oblique%20view.png">
+  <img src="assets/oblique%20view-no-bg.png">
 </p>
 
 ## Overview
